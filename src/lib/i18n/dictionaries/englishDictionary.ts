@@ -2169,7 +2169,6 @@ const goldTooth: Record<GoldTooth, string> = {
 };
 
 const guideCompost: Record<GuideCompost, string> = {
-  "guide.compost.complete": "Compost Complete",
   "guide.compost.add.eggs.speed": "Add eggs to speed up production",
   "guide.compost.add.eggs": "Add Eggs",
   "guide.compost.eggs": "Eggs",
