@@ -4,6 +4,7 @@ import {
   AddSFL,
   AvailableSeeds,
   Base,
+  BasicTreasure,
   Beach,
   Beehive,
   BeachLuck,
@@ -233,6 +234,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   "easter.eggs": "Easter Eggs",
   egg: "Egg",
   empty: "Empty",
+  "enjoying.event": "Enjoying this event?",
   equip: "Equip",
   error: "Error",
   exotics: "Exotics",
@@ -248,6 +250,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   fish: "Fish",
   "fish.caught": "Fish Caught",
   flowers: "Flowers",
+  "flowers.found": "Flowers Found",
   foods: "Foods",
   for: "for",
   "for.info.wearable": "for more info about this wearable",
@@ -349,6 +352,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   skills: "Skills",
   "skip.order": "Skip Order",
   "sound.effects": "Sound Effects",
+  "special.event": "Special Event",
   start: "Start",
   submit: "Submit",
   submitting: "Submitting",
@@ -528,6 +532,13 @@ const availableSeeds: Record<AvailableSeeds, string> = {
 const base: Record<Base, string> = {
   "base.missing": "Missing name in config",
   "base.far.away": "You are too far away",
+};
+
+const basicTreasure: Record<BasicTreasure, string> = {
+  "basic.treasure.missingKey": "Missing Key",
+  "basic.treasure.needKey": "You need a Treasure Key to open this chest",
+  "basic.treasure.getKey":
+    "You can get Treasure Keys by completing tasks for Bumpkins",
 };
 
 const beach: Record<Beach, string> = {
@@ -3437,6 +3448,7 @@ const parsnip: Record<Parsnip, string> = {
   "parsnip.hat": "Wow, nice horns!",
   "parsnip.miss": "Don't miss out on future events and giveaways!",
   "parsnip.Bonus": "Bonus reward",
+  "parsnip.wearable": "You've discovered a special event wearable",
   "parsnip.found": "Woohoo....you found me!",
 };
 
@@ -3478,7 +3490,6 @@ const pickserver: Record<Pickserver, string> = {
   "pickserver.server": "Choose a server to join",
   "pickserver.full": "FULL",
   "pickserver.explore": "Explore custom project islands.",
-  "pickserver.event": "Special Event",
   "pickserver.built": "Do you want to build your own island?",
 };
 
@@ -4142,6 +4153,7 @@ export const ENGLISH_TERMS: Record<TranslationKeys, string> = {
   ...addSFL,
   ...availableSeeds,
   ...base,
+  ...basicTreasure,
   ...beach,
   ...beehive,
   ...beachLuck,

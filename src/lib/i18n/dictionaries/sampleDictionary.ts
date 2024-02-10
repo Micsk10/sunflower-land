@@ -4,6 +4,7 @@ import {
   AddSFL,
   AvailableSeeds,
   Base,
+  BasicTreasure,
   Beach,
   Beehive,
   BeachLuck,
@@ -259,6 +260,12 @@ const availableSeeds: Record<AvailableSeeds, string> = {
 const base: Record<Base, string> = {
   "base.missing": "",
   "base.far.away": "",
+};
+
+const basicTreasure: Record<BasicTreasure, string> = {
+  "basic.treasure.missingKey": "",
+  "basic.treasure.needKey": "",
+  "basic.treasure.getKey": "",
 };
 
 const beach: Record<Beach, string> = {
@@ -1470,6 +1477,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   "easter.eggs": "",
   egg: "",
   empty: "",
+  "enjoying.event": "",
   equip: "",
   error: "",
   exotics: "",
@@ -1486,6 +1494,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   fish: "",
   foods: "",
   flowers: "",
+  "flowers.found": "",
   for: "",
   "for.info.wearable": "",
   forbidden: "",
@@ -1585,6 +1594,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   skills: "",
   "skip.order": "",
   "sound.effects": "",
+  "special.event": "",
   start: "",
   submit: "",
   submitting: "",
@@ -2418,6 +2428,7 @@ const parsnip: Record<Parsnip, string> = {
   "parsnip.hat": "",
   "parsnip.miss": "",
   "parsnip.Bonus": "",
+  "parsnip.wearable": "",
   "parsnip.found": "",
 };
 const pending: Record<Pending, string> = {
@@ -2450,7 +2461,6 @@ const pickserver: Record<Pickserver, string> = {
   "pickserver.server": "",
   "pickserver.full": "",
   "pickserver.explore": "",
-  "pickserver.event": "",
   "pickserver.built": "",
 };
 const plazaSettings: Record<PlazaSettings, string> = {
@@ -2939,6 +2949,7 @@ export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   ...auction,
   ...addSFL,
   ...availableSeeds,
+  ...basicTreasure,
   ...base,
   ...beach,
   ...beehive,
