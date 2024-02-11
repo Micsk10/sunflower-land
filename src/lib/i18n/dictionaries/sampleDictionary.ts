@@ -57,6 +57,7 @@ import {
   GameTerms,
   GarbageCollector,
   GeneralTerms,
+  GenieLamp,
   GetContent,
   GetInputErrorMessage,
   GOBLIN_MESSAGES,
@@ -578,6 +579,8 @@ const bumpkinTrade: Record<BumpkinTrade, string> = {
   "bumpkinTrade.noTradeListed": "",
   "bumpkinTrade.sell": "",
   "bumpkinTrade.like.list": "",
+  "bumpkinTrade.goldpass.required": "",
+  "bumpkinTrade.purchase": "",
 };
 const buyFarmHand: Record<BuyFarmHand, string> = {
   "buyFarmHand.howdyBumpkin": "",
@@ -1570,6 +1573,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   "ready.trade": "",
   refresh: "",
   refreshing: "",
+  remaining: "",
   "remaining.trades": "",
   remove: "",
   reqSkillPts: "",
@@ -1635,12 +1639,17 @@ const generalTerms: Record<GeneralTerms, string> = {
   wallet: "",
   warning: "",
   welcome: "",
+  wish: "",
   "wishing.well": "",
   withdraw: "",
   withdrawing: "",
   "yes.please": "",
   yes: "",
   "you.are.here": "",
+};
+const genieLamp: Record<GenieLamp, string> = {
+  "genieLamp.ready.wish": "",
+  "genieLamp.cannotWithdraw": "",
 };
 const getContent: Record<GetContent, string> = {
   "getContent.error": "",
@@ -3041,6 +3050,7 @@ export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   ...gameDescriptions,
   ...gameTerms,
   ...generalTerms,
+  ...genieLamp,
   ...getContent,
   ...getInputErrorMessage,
   ...goblin_messages,
