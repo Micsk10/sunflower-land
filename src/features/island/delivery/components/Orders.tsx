@@ -404,7 +404,7 @@ export const DeliveryOrders: React.FC<Props> = ({ selectedId, onSelect }) => {
                 <img src={SUNNYSIDE.icons.timer} className="h-4 mx-auto" />
               </div>
               <span className="text-xs">
-                {t("new.delivery.in")}
+                {t("new.delivery.in")}:{" "}
                 {`${secondsToString(secondsTillReset(), {
                   length: "medium",
                 })}.`}
