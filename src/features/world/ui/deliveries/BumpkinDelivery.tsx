@@ -29,6 +29,7 @@ import { useRandomItem } from "lib/utils/hooks/useRandomItem";
 import { getTotalExpansions } from "./DeliveryPanelContent";
 import { DELIVERY_LEVELS } from "features/island/delivery/lib/delivery";
 import { getSeasonalTicket } from "features/game/types/seasons";
+import { useAppTranslation } from "lib/i18n/useAppTranslations";
 
 export const OrderCard: React.FC<{
   order: Order;
@@ -38,6 +39,7 @@ export const OrderCard: React.FC<{
   hasRequirementsCheck: (order: Order) => boolean;
 }> = ({ order, inventory, balance, onDeliver, hasRequirementsCheck }) => {
   const canDeliver = hasRequirementsCheck(order);
+  const { t } = useAppTranslation();
   return (
     <>
       <div className="">
@@ -74,7 +76,7 @@ export const OrderCard: React.FC<{
             })}
             <div className="flex items-center justify-between mt-2 mb-0.5">
               <Label icon={chest} type="warning" className="ml-1.5">
-                Reward
+                {t("reward")}
               </Label>
               {order.reward.sfl && (
                 <div className="flex items-center">
@@ -122,13 +124,12 @@ export const Gifts: React.FC<{
   onOpen: () => void;
   name: NPCName;
 }> = ({ game, onClose, onOpen, name }) => {
+  const { t } = useAppTranslation();
   const { gameService } = useContext(Context);
 
   const [selected, setSelected] = useState<FlowerName>();
 
-  const [message, setMessage] = useState(
-    "Have you got a flower for me? Make sure it is something I like."
-  );
+  const [message, setMessage] = useState(t("bumpkin.delivery.haveFlower"));
 
   const flowers = getKeys(game.inventory).filter(
     (item) => item in FLOWERS && game.inventory[item]?.gte(1)
@@ -146,13 +147,11 @@ export const Gifts: React.FC<{
 
     // TODO - custom Bumpkin messages
     if (difference < 3) {
-      setMessage(
-        "Hmmmm, this isn't my favorite flower. But I guess it's the thought that counts."
-      );
+      setMessage(t("bumpkin.delivery.notFavorite"));
     } else if (difference < 6) {
-      setMessage("Wow, thanks! I love this flower!");
+      setMessage(t("bumpkin.delivery.loveFlower"));
     } else {
-      setMessage("This is my favorite flower! Thanks a bunch!");
+      setMessage(t("bumpkin.delivery.favoriteFlower"));
     }
   };
 
@@ -192,7 +191,7 @@ export const Gifts: React.FC<{
             className="mb-2"
             icon={ITEM_DETAILS["White Pansy"].image}
           >
-            Select a flower
+            {t("bumpkin.delivery.selectFlower")}
           </Label>
           {selected && (
             <Label
@@ -206,9 +205,7 @@ export const Gifts: React.FC<{
         </div>
 
         {flowers.length === 0 && (
-          <p className="text-xs mb-2">
-            {`Oh no, you don't have any flowers to gift!`}
-          </p>
+          <p className="text-xs mb-2">{`${t("bumpkin.delivery.noFlowers")}`}</p>
         )}
         {flowers.length > 0 && (
           <div className="flex">
@@ -227,13 +224,13 @@ export const Gifts: React.FC<{
 
       <div className="flex">
         <Button className="mr-1" onClick={onClose}>
-          Back
+          {t("back")}
         </Button>
         <Button
           disabled={!selected || !game.inventory[selected]?.gte(1)}
           onClick={onGift}
         >
-          Gift
+          {t("gift")}
         </Button>
       </div>
     </>
@@ -352,7 +349,7 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
       friendship: true,
     });
   };
-
+  const { t } = useAppTranslation();
   const hasDelivery = getKeys(delivery?.items ?? {}).every((name) => {
     if (name === "sfl") {
       return game.balance.gte(delivery?.items.sfl ?? 0);
@@ -369,7 +366,7 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
       items: nextGift?.items ?? {},
       sfl: nextGift?.sfl ?? 0,
       wearables: nextGift?.wearables ?? {},
-      message: "Gee Wizz thanks Bumpkin!!!",
+      message: t("bumpkin.delivery.thanks"),
     });
   };
 
@@ -385,8 +382,7 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
   }
 
   if (delivery?.completedAt) {
-    message =
-      "I've been waiting for this. Thanks a bunch! Come back soon for more deliveries.";
+    message = t("bumpkin.delivery.waiting");
   }
 
   if (!delivery) {
@@ -453,29 +449,29 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
 
             <div className="flex justify-between items-center mb-2">
               <Label type="default" icon={SUNNYSIDE.icons.expression_chat}>
-                Delivery
+                {t("delivery")}
               </Label>
               {delivery?.completedAt && (
                 <Label type="success" secondaryIcon={SUNNYSIDE.icons.confirm}>
-                  Completed
+                  {t("completed")}
                 </Label>
               )}
               {isLocked && (
                 <Label className="my-2" type="danger" icon={lockIcon}>
-                  Locked
+                  {t("locked")}
                 </Label>
               )}
             </div>
 
             {!delivery && !isLocked && (
-              <p className="text-xs">No deliveries available</p>
+              <p className="text-xs">{t("no.delivery.avl")}</p>
             )}
 
             {isLocked && (
               <>
                 <p className="text-xs">
-                  Prove yourself worthy. Expand your island {missingExpansions}{" "}
-                  more times.
+                  {t("bumpkin.delivery.proveYourself")} {missingExpansions}{" "}
+                  {t("bumpkin.delivery.more.time")}
                 </p>
               </>
             )}
@@ -494,7 +490,7 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
           <div className="flex mt-1">
             {acceptGifts && (
               <Button className="mr-1" onClick={() => setShowFlowers(true)}>
-                Gift
+                {t("gift")}
               </Button>
             )}
 
@@ -502,7 +498,7 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
               disabled={!delivery || !hasDelivery || !!delivery?.completedAt}
               onClick={deliver}
             >
-              Deliver
+              {t("deliver")}
             </Button>
           </div>
         </>
