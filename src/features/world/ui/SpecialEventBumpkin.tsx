@@ -139,8 +139,12 @@ export const SpecialEventBumpkin: React.FC<{ onClose: () => void }> = ({
           <Label icon={giftIcon} type="warning" className="mb-2">
             {t("congrats")}
           </Label>
-          <p className="text-sm mb-2">{t("special.event.claimForm")}</p>
-          <p className="text-xs mb-2">{t("special.event.airdropHandling")}</p>
+          <p className="text-sm mb-2">
+            Please fill in the form below to claim your airdrop.
+          </p>
+          <p className="text-xs mb-2">
+            Airdrops are handled externally and may take a few days to arrive.
+          </p>
         </div>
         <Button>{t("continue")}</Button>
       </Panel>

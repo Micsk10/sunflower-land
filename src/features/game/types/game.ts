@@ -161,6 +161,9 @@ export type Coupons =
   | "Farmhand Coupon"
   | "Farmhand"
   | "Treasure Key"
+  | "Rare Key"
+  | "Luxury Key"
+  | "Prize Ticket"
   | SeasonalTicket;
 
 export const COUPONS: Record<Coupons, { description: string }> = {
@@ -232,6 +235,15 @@ export const COUPONS: Record<Coupons, { description: string }> = {
   },
   "Treasure Key": {
     description: translate("description.treasure.key"),
+  },
+  "Luxury Key": {
+    description: translate("description.treasure.key"),
+  },
+  "Rare Key": {
+    description: translate("description.treasure.key"),
+  },
+  "Prize Ticket": {
+    description: translate("description.prizeTicket"),
   },
 };
 
@@ -677,6 +689,11 @@ export type NPCS = Partial<Record<NPCName, NPCData>>;
 export type NPCData = {
   deliveryCount: number;
   questCompletedAt?: number;
+  friendship?: {
+    updatedAt: number;
+    points: number;
+    giftClaimedAtPoints?: number;
+  };
 };
 
 export type ChoreV2 = {

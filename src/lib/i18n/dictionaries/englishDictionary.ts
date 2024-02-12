@@ -2084,6 +2084,7 @@ const gameDescriptions: Record<GameDescriptions, string> = {
   "description.farmhand": "An adopted Bumpkin on your farm",
   "description.tulip.bulb": "A ticket used during the Spring Blossom",
   "description.treasure.key": "Visit the plaza to unlock your reward",
+  "description.prizeTicket": "A ticket to enter the prize giveaways",
 
   // Easter Items
   "description.egg.basket": "Easter Event",
@@ -2406,7 +2407,7 @@ const islandupgrade: Record<Islandupgrade, string> = {
   "islandupgrade.newOpportunities":
     "An exotic island awaits you with new resources and opportunities to grow your farm.",
   "islandupgrade.confirmation":
-    "Would you like to upgrade? Your resources will be safely transferred to your new island.",
+    "Would you like to upgrade? You will start on a small island with all of your items.",
   "islandupgrade.locked": "Locked",
   "islandupgrade.exploring": "Exploring",
   "islandupgrade.welcomePetalParadise": "Welcome to Petal Paradise!",

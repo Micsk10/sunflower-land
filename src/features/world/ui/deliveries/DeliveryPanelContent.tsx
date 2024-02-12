@@ -22,11 +22,12 @@ import classNames from "classnames";
 import { getOrderSellPrice } from "features/game/events/landExpansion/deliver";
 import { getSeasonalTicket } from "features/game/types/seasons";
 import { ITEM_DETAILS } from "features/game/types/images";
-import { hasFeatureAccess } from "lib/flags";
+import { ADMIN_IDS, hasFeatureAccess } from "lib/flags";
 import { DELIVERY_LEVELS } from "features/island/delivery/lib/delivery";
 import { getSeasonChangeover } from "lib/utils/getSeasonWeek";
 import { gameAnalytics } from "lib/gameAnalytics";
 import { useAppTranslation } from "lib/i18n/useAppTranslations";
+import { BumpkinDelivery } from "./BumpkinDelivery";
 
 interface OrderCardsProps {
   orders: Order[];
@@ -38,7 +39,7 @@ interface OrderCardsProps {
   hasRequirementsCheck: (order: Order) => boolean;
 }
 
-const OrderCards: React.FC<OrderCardsProps> = ({
+export const OrderCards: React.FC<OrderCardsProps> = ({
   orders,
   inventory,
   balance,
@@ -175,7 +176,7 @@ const OrderCards: React.FC<OrderCardsProps> = ({
   );
 };
 
-function getTotalExpansions({
+export function getTotalExpansions({
   game,
 }: {
   game: Pick<GameState, "inventory" | "island">;
@@ -200,6 +201,9 @@ const _delivery = (state: MachineState) => state.context.state.delivery;
 const _inventory = (state: MachineState) => state.context.state.inventory;
 const _balance = (state: MachineState) => state.context.state.balance;
 const _game = (state: MachineState) => state.context.state as GameState;
+const _beta = (state: MachineState) =>
+  hasFeatureAccess(state.context.state, "BUMPKIN_GIFTS") ||
+  ADMIN_IDS.includes(state.context.farmId);
 
 export const DeliveryPanelContent: React.FC<Props> = ({
   npc,
@@ -213,6 +217,7 @@ export const DeliveryPanelContent: React.FC<Props> = ({
   const inventory = useSelector(gameService, _inventory);
   const balance = useSelector(gameService, _balance);
   const game = useSelector(gameService, _game);
+  const beta = useSelector(gameService, _beta);
 
   let orders = delivery.orders.filter(
     (order) =>
@@ -236,6 +241,10 @@ export const DeliveryPanelContent: React.FC<Props> = ({
   const noOrder = useRandomItem(dialogue.noOrder);
 
   const [selectedOrderId, setSelectedOrderId] = useState<string | undefined>();
+
+  if (beta) {
+    return <BumpkinDelivery npc={npc} onClose={onClose} />;
+  }
 
   const hasRequirements = (order?: Order) => {
     if (!order) return false;
