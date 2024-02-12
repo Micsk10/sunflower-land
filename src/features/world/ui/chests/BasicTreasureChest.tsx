@@ -73,7 +73,7 @@ export const BasicTreasureChest: React.FC<Props> = ({ onClose, location }) => {
             }}
           />
         </div>
-        <Button disabled={true}>Good Luck!</Button>
+        <Button disabled={true}>{t("basic.treasure.goodLuck")}?</Button>
       </Panel>
     );
   }
@@ -97,7 +97,7 @@ export const BasicTreasureChest: React.FC<Props> = ({ onClose, location }) => {
             }}
           />
         </div>
-        <Button onClick={() => spin()}>Spin</Button>
+        <Button onClick={() => spin()}>{t("spin")}</Button>
       </Panel>
     );
   }
@@ -142,16 +142,12 @@ export const BasicTreasureChest: React.FC<Props> = ({ onClose, location }) => {
           icon={ITEM_DETAILS["Treasure Key"].image}
           secondaryIcon={SUNNYSIDE.icons.confirm}
         >
-          Treasure Key
+          {t("basic.treasure.key")}
         </Label>
-        <p className="text-xs mb-2">
-          Congratulations, you have a Treasure Key!
-        </p>
-        <p className="text-xs mb-2">
-          Would you like to open the chest and claim a reward?
-        </p>
+        <p className="text-xs mb-2">{t("basic.treasure.congratsKey")}</p>
+        <p className="text-xs mb-2">{t("basic.treasure.openChest")}</p>
       </div>
-      <Button onClick={open}>Open</Button>
+      <Button onClick={open}>{t("open")}</Button>
     </CloseButtonPanel>
   );
 };
