@@ -15,7 +15,6 @@ import wheel from "assets/ui/lunar_wheel.png";
 
 import { useAppTranslation } from "lib/i18n/useAppTranslations";
 
-
 interface Props {
   onClose: () => void;
   location: "plaza" | "lunar_island";
