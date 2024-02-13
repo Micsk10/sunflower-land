@@ -244,7 +244,6 @@ export const Gifts: React.FC<{
     const difference =
       (state.context.state.npcs?.[name]?.friendship?.points ?? 0) - previous;
 
-
     if (
       difference >= 6 ||
       !!BUMPKIN_FLOWER_BONUSES[name]?.[selected as FlowerName]
@@ -262,8 +261,6 @@ export const Gifts: React.FC<{
       );
     }
   };
-
-  const { t } = useAppTranslation();
 
   return (
     <>
@@ -470,8 +467,6 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
     }
     return game.inventory[name]?.gte(delivery?.items[name] ?? 0);
   });
-
-  const { t } = useAppTranslation();
 
   const openReward = () => {
     const nextGift = getNextGift({ game, npc });
