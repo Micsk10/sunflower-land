@@ -165,6 +165,7 @@ import {
   WornDescription,
   World,
   MilestoneMessages,
+  Event,
 } from "./types";
 
 const generalTerms: Record<GeneralTerms, string> = {
@@ -419,6 +420,9 @@ const generalTerms: Record<GeneralTerms, string> = {
   "yes.please": "",
   yes: "",
   "you.are.here": "",
+  "hoarding.check": "",
+  opensea: "",
+  layouts: ""
 };
 
 const achievementTerms: Record<AchievementsTerms, string> = {
@@ -1383,6 +1387,7 @@ const errorTerms: Record<ErrorTerms, string> = {
   "error.tooLate": "",
   "error.decorationCollides": "",
   "error.idAlreadyExists": "",
+  "error.ClientRPC": ""
 };
 const exoticShopItems: Record<ExoticShopItems, string> = {
   "exoticShopItems.line1": "",
@@ -3097,6 +3102,10 @@ const milestoneMessages: Record<MilestoneMessages, string> = {
   "milestone.bloomBigShot": "",
   "milestone.lilyLuminary": "",
 };
+const event: Record<Event, string> = {
+  "event.christmas": "",
+  "event.LunarNewYear": "",
+};
 
 export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   // Change SAMPLE to your language
@@ -3265,4 +3274,5 @@ export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   ...winner,
   ...world,
   ...wornDescription,
+  ...event,
 };

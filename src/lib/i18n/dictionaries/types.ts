@@ -250,7 +250,10 @@ export type GeneralTerms =
   | "withdrawing"
   | "yes.please"
   | "yes"
-  | "you.are.here";
+  | "you.are.here"
+  | "hoarding.check"
+  | "opensea"
+  | "layouts";
 
 export type AchievementsTerms =
   | "breadWinner.description"
@@ -1211,7 +1214,8 @@ export type ErrorTerms =
   | "error.tooLate"
   | "error.insufficientSFL"
   | "error.decorationCollides"
-  | "error.idAlreadyExists";
+  | "error.idAlreadyExists"
+  | "error.ClientRPC";
 
 export type ExoticShopItems =
   | "exoticShopItems.line1"
@@ -2974,6 +2978,8 @@ export type World =
   | "world.intro.six"
   | "world.intro.seven";
 
+export type Event = "event.christmas" | "event.LunarNewYear";
+
 export type TranslationKeys =
   | AchievementsTerms
   | Auction
@@ -3139,4 +3145,5 @@ export type TranslationKeys =
   | Withdraw
   | Winner
   | WornDescription
-  | World;
+  | World
+  | Event;

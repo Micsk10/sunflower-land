@@ -57,7 +57,7 @@ export const Auth: React.FC = () => {
                 <img id="logo" src={winterLogo} className="w-full mb-1" />
                 <div className="flex items-center justify-center">
                   <Label icon={SUNNYSIDE.icons.stopwatch} type="vibrant">
-                    Christmas event!
+                    {t("event.christmas")}
                   </Label>
                   <Label type="default" className="ml-2">
                     {CONFIG.RELEASE_VERSION?.split("-")[0]}
@@ -80,7 +80,7 @@ export const Auth: React.FC = () => {
                         type="vibrant"
                         className="ml-2"
                       >
-                        Lunar New Year Event
+                        {t("event.LunarNewYear")}
                       </Label>
                     )}
                 </div>
