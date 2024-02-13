@@ -32,14 +32,16 @@ import { getSeasonalTicket } from "features/game/types/seasons";
 import { NpcDialogues } from "lib/i18n/dictionaries/types";
 import { useAppTranslation } from "lib/i18n/useAppTranslations";
 import { BUMPKIN_FLOWER_BONUSES } from "features/game/types/gifts";
+import { getOrderSellPrice } from "features/game/events/landExpansion/deliver";
 
 export const OrderCard: React.FC<{
   order: Order;
-  balance: Decimal;
-  inventory: Inventory;
+  game: GameState;
   onDeliver: () => void;
   hasRequirementsCheck: (order: Order) => boolean;
-}> = ({ order, inventory, balance, onDeliver, hasRequirementsCheck }) => {
+}> = ({ order, game, onDeliver, hasRequirementsCheck }) => {
+  const { balance, inventory } = game;
+
   const canDeliver = hasRequirementsCheck(order);
   const { t } = useAppTranslation();
   return (
@@ -81,9 +83,17 @@ export const OrderCard: React.FC<{
                 {t("reward")}
               </Label>
               {order.reward.sfl && (
-                <div className="flex items-center">
-                  <img src={sfl} className="w-5 h-auto mr-1" />
-                  <span className="text-xs">{order.reward.sfl}</span>
+                <div className="flex items-center mr-1">
+                  <img src={sfl} className="w-4 h-auto mr-1" />
+                  <span
+                    style={{
+                      // Match labels
+                      lineHeight: "15px",
+                      fontSize: "13px",
+                    }}
+                  >
+                    {getOrderSellPrice(game, order).toFixed(2)}
+                  </span>
                 </div>
               )}
               {order.reward.tickets && (
@@ -319,7 +329,7 @@ export const Gifts: React.FC<{
           <p className="text-xs mb-2">{`${t("bumpkin.delivery.noFlowers")}`}</p>
         )}
         {flowers.length > 0 && (
-          <div className="flex">
+          <div className="flex w-full flex-wrap">
             {flowers.map((flower) => (
               <Box
                 key={flower}
@@ -593,8 +603,7 @@ export const BumpkinDelivery: React.FC<Props> = ({ onClose, npc }) => {
 
             {delivery && (
               <OrderCard
-                balance={gameState.context.state.balance}
-                inventory={gameState.context.state.inventory}
+                game={gameState.context.state}
                 order={delivery as Order}
                 hasRequirementsCheck={() => true}
                 onDeliver={deliver}

@@ -353,12 +353,19 @@ export const STATIC_OFFLINE_FARM: GameState = {
   previousBalance: new Decimal(0),
   previousInventory: {},
   inventory: {
+    "Treasure Key": new Decimal(1),
     "Earn Alliance Banner": new Decimal(1),
     "Farmhand Coupon": new Decimal(1),
     "Sunpetal Seed": new Decimal(100),
     "White Festive Fox": new Decimal(3),
     "Red Pansy": new Decimal(3),
     "White Pansy": new Decimal(3),
+    "Yellow Pansy": new Decimal(3),
+    "Blue Pansy": new Decimal(3),
+    "Blue Daffodil": new Decimal(3),
+    "Yellow Daffodil": new Decimal(3),
+    "White Daffodil": new Decimal(3),
+    "Red Daffodil": new Decimal(3),
     Sunflower: new Decimal(1000),
     Scarecrow: new Decimal(1),
     Shovel: new Decimal(1),
@@ -501,7 +508,7 @@ export const STATIC_OFFLINE_FARM: GameState = {
   },
   auctioneer: {},
   delivery: {
-    fulfilledCount: 0,
+    fulfilledCount: 10,
     orders: [
       {
         createdAt: Date.now(),
@@ -546,6 +553,7 @@ export const STATIC_OFFLINE_FARM: GameState = {
     milestone: {
       goal: 10,
       total: 10,
+      claimedAt: new Date("2024-02-15").getTime(),
     },
   },
 
