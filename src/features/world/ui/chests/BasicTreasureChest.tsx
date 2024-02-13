@@ -30,7 +30,7 @@ export const BasicTreasureChest: React.FC<Props> = ({ onClose, location }) => {
   const [isOpening, setIsOpening] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
 
-  const hasKey = !!gameState.context.state.inventory["Treasure Key"];
+  const hasKey = !!gameState.context.state.inventory["Treasure Key"]?.gte(1);
 
   const open = () => {
     // TEMP - spin the wheel animation
@@ -157,17 +157,31 @@ export const BasicTreasureChest: React.FC<Props> = ({ onClose, location }) => {
     );
   }
 
+  const isValentinesDayUTC =
+    new Date().getUTCMonth() === 1 && new Date().getUTCDate() === 14;
+
   return (
     <CloseButtonPanel onClose={onClose}>
       <div className="p-2">
-        <Label
-          type="default"
-          className="mb-2"
-          icon={ITEM_DETAILS["Treasure Key"].image}
-          secondaryIcon={SUNNYSIDE.icons.confirm}
-        >
-          {t("basic.treasure.key")}
-        </Label>
+        <div className="flex flex-wrap mr-12">
+          <Label
+            type="default"
+            icon={ITEM_DETAILS["Treasure Key"].image}
+            className="mb-2 mr-3"
+            secondaryIcon={SUNNYSIDE.icons.confirm}
+          >
+            {t("basic.treasure.key")}
+          </Label>
+          {isValentinesDayUTC && (
+            <Label
+              className="mb-2"
+              type="vibrant"
+              icon={SUNNYSIDE.icons.stopwatch}
+            >
+              Valentine Rewards
+            </Label>
+          )}
+        </div>
         <p className="text-xs mb-2">{t("basic.treasure.congratsKey")}</p>
         <p className="text-xs mb-2">{t("basic.treasure.openChest")}</p>
       </div>
