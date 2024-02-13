@@ -433,6 +433,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   default: "Default",
   formula: "Formula",
   chill: "Chill",
+  full: "Full",
 };
 
 const achievementTerms: Record<AchievementsTerms, string> = {
@@ -592,6 +593,10 @@ const beach: Record<Beach, string> = {
 
 const beehive: Record<Beehive, string> = {
   "beehive.harvestHoney": "Harvest honey",
+  "beehive.noFlowersGrowing": "No flowers growing",
+  "beehive.beeSwarm": "Bee swarm",
+  "beehive.pollinationCelebration":
+    "Pollination celebration! Your crops are in for a treat with a 0.2 boost from a friendly bee swarm!",
 };
 
 const beachLuck: Record<BeachLuck, string> = {

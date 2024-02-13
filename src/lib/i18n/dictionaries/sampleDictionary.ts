@@ -432,6 +432,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   default: "",
   formula: "",
   chill: "",
+  full: "",
 };
 
 const achievementTerms: Record<AchievementsTerms, string> = {
@@ -552,6 +553,9 @@ const beach: Record<Beach, string> = {
 
 const beehive: Record<Beehive, string> = {
   "beehive.harvestHoney": "",
+  "beehive.noFlowersGrowing": "",
+  "beehive.beeSwarm": "",
+  "beehive.pollinationCelebration": "",
 };
 
 const beachLuck: Record<BeachLuck, string> = {
@@ -2632,7 +2636,7 @@ const purchaseableBaitTranslation: Record<PurchaseableBaitTranslation, string> =
 const quest: Record<Quest, string> = {
   "quest.mint.free": "",
   "quest.equipWearable": "",
-  "quest.congrats": ""
+  "quest.congrats": "",
 };
 const questions: Record<Questions, string> = {
   "questions.obtain.MATIC": "",

@@ -37,6 +37,7 @@ import { BeeSwarm } from "./BeeSwarm";
 import { Label } from "components/ui/Label";
 import { SpeakingText } from "features/game/components/SpeakingModal";
 import { useAppTranslation } from "lib/i18n/useAppTranslations";
+import { translate } from "lib/i18n/translate";
 
 interface Props {
   id: string;
@@ -253,7 +254,7 @@ export const Beehive: React.FC<Props> = ({ id }) => {
         >
           <InfoPopover showPopover={showNoFlowerGrowingPopover}>
             <div className="flex flex-1 items-center text-xxs justify-center px-2 py-1 whitespace-nowrap">
-              <span>No flowers growing</span>
+              <span>{t("beehive.noFlowersGrowing")}</span>
             </div>
           </InfoPopover>
         </div>
@@ -269,7 +270,8 @@ export const Beehive: React.FC<Props> = ({ id }) => {
             <div className="flex flex-1 items-center text-xxs justify-center px-2 py-1 whitespace-nowrap">
               <img src={ITEM_DETAILS.Honey.image} className="w-4 mr-1" />
               <span>
-                {t("honey")}: {Number(honeyAmount) < 1 ? honeyAmount : "Full"}
+                {t("honey")}
+                {":"} {Number(honeyAmount) < 1 ? honeyAmount : t("full")}
               </span>
             </div>
           </InfoPopover>
@@ -328,7 +330,7 @@ export const Beehive: React.FC<Props> = ({ id }) => {
                       }
                     )}
                   >
-                    {Number(honeyAmount) < 1 ? honeyAmount : "Full"}
+                    {Number(honeyAmount) < 1 ? honeyAmount : t("full")}
                   </p>
                 </div>
               </div>
@@ -350,12 +352,12 @@ export const Beehive: React.FC<Props> = ({ id }) => {
           bumpkinParts={NPC_WEARABLES.stevie}
         >
           <Label type="vibrant" icon={lightning}>
-            Bee swarm
+            {t("beehive.beeSwarm")}
           </Label>
           <SpeakingText
             message={[
               {
-                text: "Pollination celebration! Your crops are in for a treat with a 0.2 boost from a friendly bee swarm!",
+                text: translate("beehive.pollinationCelebration"),
               },
             ]}
             onClose={() => setShowSwarmModal(false)}

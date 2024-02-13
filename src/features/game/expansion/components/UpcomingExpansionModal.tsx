@@ -6,7 +6,6 @@ import { SUNNYSIDE } from "assets/sunnyside";
 import { craftingRequirementsMet } from "features/game/lib/craftingRequirement";
 import { ExpansionRequirements } from "components/ui/layouts/ExpansionRequirements";
 import { expansionRequirements } from "features/game/events/landExpansion/revealLand";
-import { Label } from "components/ui/Label";
 import { translate } from "lib/i18n/translate";
 import { useAppTranslation } from "lib/i18n/useAppTranslations";
 
