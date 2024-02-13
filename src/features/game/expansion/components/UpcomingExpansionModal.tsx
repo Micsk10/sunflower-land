@@ -24,24 +24,6 @@ export const UpcomingExpansionModal: React.FC<Props> = ({
   const { t } = useAppTranslation();
   const requirements = expansionRequirements({ game: gameState });
 
-  if (
-    Date.now() < new Date("2024-02-07T00:00:00.000Z").getTime() &&
-    gameState.island.type === "spring" &&
-    gameState.inventory["Basic Land"]?.gte(12)
-  ) {
-    return (
-      <div className="p-2">
-        <Label className="my-2" type="info" icon={SUNNYSIDE.icons.timer}>
-          Coming soon
-        </Label>
-        <p className="text-sm">Great work Bumpkin!</p>
-        <p className="text-xs my-2">
-          More expansions will be available on the 7th February.
-        </p>
-      </div>
-    );
-  }
-
   // cannot expand if there is no next expansion
   if (requirements === undefined) {
     return (

@@ -166,6 +166,7 @@ import {
   World,
   MilestoneMessages,
   Event,
+  Promo,
 } from "./types";
 
 const generalTerms: Record<GeneralTerms, string> = {
@@ -422,7 +423,15 @@ const generalTerms: Record<GeneralTerms, string> = {
   "you.are.here": "",
   "hoarding.check": "",
   opensea: "",
-  layouts: ""
+  layouts: "",
+  labels: "",
+  buff: "",
+  speed: "",
+  treasure: "",
+  special: "",
+  default: "",
+  formula: "",
+  chill: "",
 };
 
 const achievementTerms: Record<AchievementsTerms, string> = {
@@ -1387,7 +1396,7 @@ const errorTerms: Record<ErrorTerms, string> = {
   "error.tooLate": "",
   "error.decorationCollides": "",
   "error.idAlreadyExists": "",
-  "error.ClientRPC": ""
+  "error.ClientRPC": "",
 };
 const exoticShopItems: Record<ExoticShopItems, string> = {
   "exoticShopItems.line1": "",
@@ -2622,6 +2631,8 @@ const purchaseableBaitTranslation: Record<PurchaseableBaitTranslation, string> =
   };
 const quest: Record<Quest, string> = {
   "quest.mint.free": "",
+  "quest.equipWearable": "",
+  "quest.congrats": ""
 };
 const questions: Record<Questions, string> = {
   "questions.obtain.MATIC": "",
@@ -3107,6 +3118,11 @@ const event: Record<Event, string> = {
   "event.LunarNewYear": "",
 };
 
+const promo: Record<Promo, string> = {
+  "promo.cdcBonus": "",
+  "promo.expandLand": "",
+};
+
 export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   // Change SAMPLE to your language
   ...achievementTerms,
@@ -3275,4 +3291,5 @@ export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   ...world,
   ...wornDescription,
   ...event,
+  ...promo,
 };
