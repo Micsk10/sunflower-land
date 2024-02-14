@@ -30,6 +30,7 @@ import {
   ConfirmSkill,
   ConfirmationTerms,
   Conversations,
+  CropBoomMessages,
   CropFruitDescriptions,
   Deliveryitem,
   DefaultDialogue,
@@ -114,6 +115,7 @@ import {
   PirateQuest,
   Pickserver,
   PlazaSettings,
+  PlayerListMessages,
   PlayerTrade,
   Portal,
   PurchaseableBaitTranslation,
@@ -173,14 +175,14 @@ const generalTerms: Record<GeneralTerms, string> = {
   "2x.sale": "2x Sale",
   advanced: "Advanced",
   achievements: "Achievements",
-  accept: "Accept",
+  accept: "Accept:",
   "accepting.terms": "Accepting terms...",
   "amount.matic": "Amount in MATIC",
   deposit: "Deposit",
   add: "Add",
   addSFL: "Add SFL",
   "add.liquidity": "Add Liquidity",
-  "alr.bought": "Already Bought",
+  "alr.bought": "Already Bought!",
   "alr.claim": "Already Claimed!",
   "alr.completed": "Already Completed",
   "alr.crafted": "Already Crafted!",
@@ -218,7 +220,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   completed: "Completed",
   complete: "complete",
   confirm: "Confirm",
-  congrats: "Congratulations!",
+  congrats: "Congratulations",
   connected: "Connected",
   connecting: "Connecting",
   continue: "Continue",
@@ -285,6 +287,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   honey: "Honey",
   "hungry?": "Hungry?",
   info: "Info",
+  kick: "Kick",
   item: "Item",
   land: "Land",
   "land.id": "Land ID",
@@ -293,6 +296,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   "let'sDoThis": "Let's do this!",
   "lets.go": "Let's Go!",
   limit: "Limit",
+  "linked.wallet": "Linked wallet",
   list: "List",
   "list.trade": "List trade",
   loading: "Loading",
@@ -304,6 +308,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   "make.wish": "Make a Wish",
   "making.wish": "Making a wish",
   max: "Max",
+  message: "Message",
   minimum: "Minimum",
   mins: "mins",
   mint: "Mint",
@@ -318,6 +323,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   "no.have.bumpkin": "You do not have a Bumpkin!",
   "no.limits.exceeded": "No limits exceeded",
   "no.mail": "No mail",
+  "no.obsessions": "No Obsessions",
   "no.thanks": "No thanks",
   "ocean.fishing": "Ocean fishing",
   off: "Off",
@@ -327,6 +333,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   open: "open",
   "open.gift": "Open Gift",
   "pass.required": "Pass Required",
+  place: "Place",
   "place.map": "Place on map",
   "placing.bid": "Placing bid",
   plant: "Plant",
@@ -351,6 +358,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   reqSkillPts: "Required Skill Points",
   reqSkills: "Required Skills",
   required: "required",
+  requires: "Requires",
   resale: "Resale",
   resources: "Resources",
   restock: "Restock",
@@ -390,6 +398,7 @@ const generalTerms: Record<GeneralTerms, string> = {
   task: "Task",
   "thank.you": "Thank you!",
   "there.currently": "There is currently",
+  time: "Time",
   tools: "Tools",
   total: "Total",
   trades: "Trades",
@@ -579,7 +588,7 @@ const basicTreasure: Record<BasicTreasure, string> = {
   "basic.treasure.needKey": "You need a Treasure Key to open this chest",
   "basic.treasure.getKey":
     "You can get Treasure Keys by completing tasks for Bumpkins",
-  "basic.treasure.goodLuck": "Good Luck!",
+  "basic.treasure.goodLuck": "Good Luck",
   "basic.treasure.key": "Treasure Key",
   "basic.treasure.congratsKey": "Congratulations, you have a Treasure Key!",
   "basic.treasure.openChest":
@@ -1094,6 +1103,15 @@ const community: Record<Community, string> = {
   "comunity.Travel": "Travel to community built islands",
 };
 
+const cropBoomMessages: Record<CropBoomMessages, string> = {
+  "crop.boom.welcome": "Welcome to Crop Boom",
+  "crop.boom.reachOtherSide":
+    "Reach the other side of the dangerous crop field to claim an Arcade Token",
+  "crop.boom.bewareExplodingCrops":
+    "Beware of exploding crops. If you step on these, you will start from the beginning",
+  "crop.boom.newPuzzleDaily": "Each day a new puzzle will appear",
+};
+
 const compostDescription: Record<CompostDescription, string> = {
   "compost.fruitfulBlend": "Fruitful Blend boosts each fruit yield by +0.1",
   "compost.sproutMix": "Sprout Mix increases your crop yield by +0.2",
@@ -1207,7 +1225,7 @@ const conversations: Record<Conversations, string> = {
     "I'm the Mayor of this town! I'm in charge of making sure everyone is happy. I also make sure that everyone has a name!",
   "mayor.plaza.fixNamePrompt":
     "You don't have a name yet? Well, we can fix that! Do you want me to get the papers ready?",
-  "mayor.plaza.enterUsernamePrompt": "Enter your username",
+  "mayor.plaza.enterUsernamePrompt": "Enter your username:",
   "mayor.plaza.usernameValidation":
     "Please be aware that usernames must adhere to our",
   "mayor.plaza.niceToMeetYou": "Nice to meet you, !",
@@ -1215,6 +1233,10 @@ const conversations: Record<Conversations, string> = {
     "Congratulations , your paperwork is now complete. See you around!",
   "mayor.plaza.enjoyYourStay":
     "I hope you enjoy your stay in Sunflower Land! If you ever need me again, just come back to me!",
+  "mayor.codeOfConduct": "Code of Conduct",
+  "mayor.failureToComply":
+    "Failure to comply may result in penalties, including possible account suspension",
+  "mayor.paperworkComplete": "Your paperwork is now complete. See you around",
 };
 
 const cropFruitDescriptions: Record<CropFruitDescriptions, string> = {
@@ -2615,7 +2637,7 @@ const kick: Record<Kick, string> = {
 
 const kicked: Record<Kicked, string> = {
   "kicked.kicked": "You have been kicked!",
-  "kicked.Reason": "Reason",
+  "kicked.Reason": "Reason:",
 };
 
 const landscapeTerms: Record<LandscapeTerms, string> = {
@@ -3730,6 +3752,17 @@ const plazaSettings: Record<PlazaSettings, string> = {
   "plazaSettings.noMutedPlayers": "You have no muted players.",
 };
 
+const playerListMessages: Record<PlayerListMessages, string> = {
+  "player.list.playerID": "Player ID",
+  "player.list.farmID": "Farm ID",
+  "player.list.username": "Username",
+  "player.list.status": "Status",
+  "player.list.action": "Action",
+  "player.list.mutedFor": "Muted for",
+  "player.list.search": "Search",
+  "player.list.playersConnected": "150 Players Connected",
+};
+
 const playerTrade: Record<PlayerTrade, string> = {
   "playerTrade.no.trade": "No trades available.",
   "playerTrade.max.item": "Oh no! You've reached your max items.",
@@ -4088,7 +4121,7 @@ const statements: Record<Statements, string> = {
   "statements.wallet.to.inventory.transfer": "Deposit items from your wallet",
   "statements.crop.water": "These crops need water!",
   "statements.daily.limit": "Daily Limit",
-  "statements.sure.buy": "Are you sure you want to buy ",
+  "statements.sure.buy": "Are you sure you want to buy? ",
   "statements.perplayer": "per Player",
   "statements.minted.goToChest": "Go to your chest and place it on your island",
   "statements.minted.withdrawAfterMint":
@@ -4455,6 +4488,7 @@ export const ENGLISH_TERMS: Record<TranslationKeys, string> = {
   ...confirmSkill,
   ...confirmationTerms,
   ...conversations,
+  ...cropBoomMessages,
   ...cropFruitDescriptions,
   ...deliveryitem,
   ...defaultDialogue,
@@ -4540,6 +4574,7 @@ export const ENGLISH_TERMS: Record<TranslationKeys, string> = {
   ...pirateQuest,
   ...pickserver,
   ...plazaSettings,
+  ...playerListMessages,
   ...playerTrade,
   ...portal,
   ...purchaseableBaitTranslation,
