@@ -169,6 +169,7 @@ import {
   MilestoneMessages,
   Event,
   Promo,
+  Trader,
 } from "./types";
 
 const generalTerms: Record<GeneralTerms, string> = {
@@ -445,7 +446,13 @@ const generalTerms: Record<GeneralTerms, string> = {
   collectibles: "",
   buds: "",
   wearables: "",
-  bumpkin: ""
+  bumpkin: "",
+  storage: "",
+  upcoming: "",
+  collection: "",
+  purchase: "",
+  listing: "",
+  cancelling: ""
 };
 
 const achievementTerms: Record<AchievementsTerms, string> = {
@@ -1317,6 +1324,7 @@ const delivery: Record<Delivery, string> = {
   "delivery.ressource": "",
   "delivery.feed": "",
   "delivery.fee": "",
+  "delivery.goblin.comm.treasury": "",
 };
 const deliveryHelp: Record<DeliveryHelp, string> = {
   "deliveryHelp.pumpkinSoup": "",
@@ -3160,6 +3168,17 @@ const promo: Record<Promo, string> = {
   "promo.expandLand": "",
 };
 
+const trader: Record<Trader, string> = {
+  "trader.you.pay": "",
+  "trader.price.per.unit": "",
+  "trader.goblin.fee": "",
+  "trader.they.receive": "",
+  "trader.seller.receives": "",
+  "trader.buyer.pays": "",
+  "trader.cancel.trade": "",
+  "trader.you.receive": ""
+};
+
 export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   // Change SAMPLE to your language
   ...achievementTerms,
@@ -3331,4 +3350,5 @@ export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
   ...wornDescription,
   ...event,
   ...promo,
+  ...trader,
 };
