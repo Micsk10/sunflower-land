@@ -3044,7 +3044,9 @@ export type Trader =
   | "trader.seller.receives"
   | "trader.buyer.pays"
   | "trader.cancel.trade"
-  | "trader.you.receive";
+  | "trader.you.receive"
+  | "trader.PoH"
+  | "trader.start.verification";
 
 export type TranslationKeys =
   | AchievementsTerms

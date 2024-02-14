@@ -3177,6 +3177,8 @@ const trader: Record<Trader, string> = {
   "trader.buyer.pays": "",
   "trader.cancel.trade": "",
   "trader.you.receive": "",
+  "trader.PoH": "",
+  "trader.start.verification": "",
 };
 
 export const SAMPLE_TERMS: Record<TranslationKeys, string> = {
