@@ -272,6 +272,18 @@ export const Gifts: React.FC<{
     }
   };
 
+  let translated: string = t(message);
+
+  const giftedAt = game.npcs?.[name]?.friendship?.giftedAt ?? 0;
+  // GiftedAt is the same UTC day as right now
+  const isLocked =
+    giftedAt > 0 &&
+    new Date(giftedAt).toDateString() === new Date().toDateString();
+
+  if (isLocked) {
+    translated = `${translated} ${t("npcDialogues.default.locked")}`;
+  }
+
   return (
     <>
       <div className="p-2">
@@ -302,7 +314,7 @@ export const Gifts: React.FC<{
           <InlineDialogue
             trail={25}
             key={(game.npcs?.[name]?.friendship?.points ?? 0).toString()}
-            message={t(message)}
+            message={translated}
           />
         </div>
 
@@ -348,10 +360,21 @@ export const Gifts: React.FC<{
           {t("back")}
         </Button>
         <Button
-          disabled={!selected || !game.inventory[selected]?.gte(1)}
+          disabled={isLocked || !selected || !game.inventory[selected]?.gte(1)}
           onClick={onGift}
         >
-          {t("gift")}
+          <div className="flex items-center">
+            {isLocked && (
+              <>
+                <img src={lockIcon} className="w-4 h-auto mr-1" />
+                <img
+                  src={SUNNYSIDE.icons.stopwatch}
+                  className="w-4 h-auto mr-1"
+                />
+              </>
+            )}
+            {t("gift")}
+          </div>
         </Button>
       </div>
     </>

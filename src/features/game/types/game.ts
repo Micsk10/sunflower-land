@@ -693,6 +693,7 @@ export type NPCData = {
     updatedAt: number;
     points: number;
     giftClaimedAtPoints?: number;
+    giftedAt?: number;
   };
 };
 
@@ -859,6 +860,7 @@ export type AttachedFlower = {
   id: string;
   attachedAt: number;
   attachedUntil: number;
+  rate?: number;
 };
 
 export type Beehive = {

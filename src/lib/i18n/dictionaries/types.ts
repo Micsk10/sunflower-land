@@ -2363,6 +2363,7 @@ export type NpcDialogues =
   | "npcDialogues.pumpkinPete.noOrder2"
 
   // NPC Gift Dialogue
+  | "npcDialogues.default.locked"
   | "npcDialogues.default.flowerInto"
   | "npcDialogues.default.averageFlower"
   | "npcDialogues.default.badFlower"

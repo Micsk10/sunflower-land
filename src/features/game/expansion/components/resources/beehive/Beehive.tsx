@@ -16,7 +16,6 @@ import { MachineState } from "features/game/lib/gameMachine";
 import { useInterpret, useSelector } from "@xstate/react";
 import { Bar } from "components/ui/ProgressBar";
 import { Beehive as IBeehive } from "features/game/types/game";
-import { HONEY_PRODUCTION_TIME } from "features/game/lib/updateBeehives";
 import {
   BeehiveContext,
   BeehiveMachineState,
@@ -37,6 +36,7 @@ import { BeeSwarm } from "./BeeSwarm";
 import { Label } from "components/ui/Label";
 import { SpeakingText } from "features/game/components/SpeakingModal";
 import { useAppTranslation } from "lib/i18n/useAppTranslations";
+import { DEFAULT_HONEY_PRODUCTION_TIME } from "features/game/lib/updateBeehives";
 import { translate } from "lib/i18n/translate";
 
 interface Props {
@@ -76,6 +76,7 @@ export const Beehive: React.FC<Props> = ({ id }) => {
   const hive = useSelector(gameService, getBeehiveById(id), compareHive);
 
   const beehiveContext: BeehiveContext = {
+    gameState: gameService.state.context.state,
     hive,
     honeyProduced: getCurrentHoneyProduced(hive),
   };
@@ -171,8 +172,10 @@ export const Beehive: React.FC<Props> = ({ id }) => {
     }
   }, [honeyProduced, showHoneyLevelPopover]);
 
-  const honeyAmount = (honeyProduced / HONEY_PRODUCTION_TIME).toFixed(4);
-  const percentage = (honeyProduced / HONEY_PRODUCTION_TIME) * 100;
+  const honeyAmount = (honeyProduced / DEFAULT_HONEY_PRODUCTION_TIME).toFixed(
+    4
+  );
+  const percentage = (honeyProduced / DEFAULT_HONEY_PRODUCTION_TIME) * 100;
   const showQuantityBar =
     showTimers && !landscaping && !showBeeAnimation && honeyProduced > 0;
 
